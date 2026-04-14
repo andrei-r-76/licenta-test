@@ -4,11 +4,60 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return "Welcome!"
+    return """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-@app.route('/how are you')
-def hello():
-    return 'I am good, how about you?'
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: sans-serif;
+        }
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+        .card {
+            text-align: center;
+            padding: 3rem 5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Welcome</h1>
+        <p>Kubernetes · Minikube · Flask</p>
+    </div>
+</body>
+</html>
+"""
+
