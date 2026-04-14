@@ -1,2 +1,2 @@
-*.tftstate*
+terraform/*.tftstate*
 terraform/.terraform
