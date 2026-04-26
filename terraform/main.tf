@@ -1,3 +1,6 @@
+resource "aws_s3_bucket" "test_bucket" {
+    bucket="licentatestterraformbucket"
+}
 resource "aws_key_pair" "test_key_pair" {
     key_name=var.test_key_name
     public_key=file(var.test_key_file_location)
@@ -56,7 +59,7 @@ resource "aws_instance" "licenta_test_VMRunner" {
     ami=var.test_ami
     instance_type=var.test_instance_type
     tags={
-        name=var.test_runner_name
+        Name=var.test_runner_name
         description=var.test_runner_desc
     }
     vpc_security_group_ids=[aws_security_group.acces_ssh.id]
@@ -68,7 +71,7 @@ resource "aws_instance" "licenta_test_VMapp" {
     ami=var.test_ami
     instance_type=var.test_instance_type
     tags={
-        name=var.test_app_name
+        Name=var.test_app_name
         description=var.test_app_desc
     }
     vpc_security_group_ids=[aws_security_group.acces_ssh.id]
