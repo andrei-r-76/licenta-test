@@ -5,7 +5,7 @@ jobs:
         name: EC2 Instance deployment
         runs-on: [self-hosted, X64, Linux, runner-vm]
         steps:
-            - name: Checkout Repo
+            - name: Checkout Repository
               uses: actions/checkout@v4
 
             - name: Terraform Commands
