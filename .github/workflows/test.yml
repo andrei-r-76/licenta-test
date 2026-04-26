@@ -11,9 +11,9 @@ jobs:
             - name: Terraform Commands
               working-directory: ./terraform
               run: |
-               terraform init
-               terraform plan -out=test_plan
-               terraform apply -auto-approve test_plan
+               terraform init -input=false
+               terraform plan -input=false -out=test_plan
+               terraform apply -input=false -auto-approve test_plan
             
             - name: Docker build and push
               run: |
