@@ -1,0 +1,21 @@
+name:  Licenta Test workflow
+on: push
+jobs:
+    ec2-deploy:
+        name: EC2 Instance deployment
+        runs-on: [self-hosted, X64, Linux, runner-vm]
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v4
+
+            - name: Terraform Commands
+              working-directory: ./terraform
+              run: |
+               terraform init
+               terraform plan -out=test_plan
+               terraform apply -auto-approve test_plan
+            
+            - name: Docker build and push
+              run: |
+               docker build -t andreir76/licenta-test .
+               docker push andreir76/licenta-test
