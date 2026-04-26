@@ -1,7 +1,3 @@
-variable "test_key_file_location" {
-    type=string
-    default="C:/Users/Ondras/Desktop/devops/licenta/licenta-test-key/test_key.pub"
-}
 variable "test_key_name" {
     type=string
     default="test_key"

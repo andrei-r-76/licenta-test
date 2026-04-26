@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "test_bucket" {
 }
 resource "aws_key_pair" "test_key_pair" {
     key_name=var.test_key_name
-    public_key=file(var.test_key_file_location)
+    public_key=file("${path.module}/test_key.pub")
 }
 
 resource "aws_vpc" "test_vpc" {
