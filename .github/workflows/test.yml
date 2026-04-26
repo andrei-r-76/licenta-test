@@ -1,5 +1,5 @@
 name:  Licenta Test workflow
-on: push
+on: workflow_dispatch
 jobs:
     ec2-deploy:
         name: EC2 Instance deployment
