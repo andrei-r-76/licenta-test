@@ -8,13 +8,18 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
 
-            - name: Terraform Commands
+            - name: Terraform Init
               working-directory: ./terraform
-              run: |
-               terraform init -input=false
-               terraform plan -input=false -out=test_plan
-               terraform apply -input=false -auto-approve test_plan
-            
+              run: terraform init -input=false
+
+            - name: Terraform Plan
+              working-directory: ./terraform
+              run: terraform plan -input=false -no-color
+
+            - name: Terraform Apply
+              working-directory: ./terraform
+              run: terraform apply -input=false -auto-approve
+                  
             - name: Docker build and push
               run: |
                docker build -t andreir76/licenta-test .
