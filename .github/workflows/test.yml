@@ -14,11 +14,11 @@ jobs:
 
             - name: Terraform Plan
               working-directory: ./terraform
-              run: terraform plan -input=false -no-color
+              run: terraform plan -input=false -no-color -parallelism=1
 
             - name: Terraform Apply
               working-directory: ./terraform
-              run: terraform apply -input=false -auto-approve
+              run: terraform apply -input=false -auto-approve -parallelism=1
                   
             - name: Docker build and push
               run: |
