@@ -57,7 +57,7 @@ resource "aws_route_table_association" "test_association" {
 
 resource "aws_instance" "licenta_test_VMRunner" {
     ami=var.test_ami
-    instance_type=var.test_instance_type
+    instance_type=var.test_runner_instance
     tags={
         Name=var.test_runner_name
         description=var.test_runner_desc

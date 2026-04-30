@@ -30,3 +30,7 @@ variable "test_app_desc" {
     type=string
     default="Creat cu terraform, va fi folosit pentru a rula aplicatia"
 }
+variable "test_runner_instance" {
+    type=string
+    default="t3.small"
+}
