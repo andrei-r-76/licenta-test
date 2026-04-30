@@ -8,12 +8,23 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
 
+            - name: Debug AWS identity
+              run: aws sts get-caller-identity
+
+            - name: Debug working dir
+              run: |
+                pwd
+                ls -la
+
             - name: Terraform Init
               working-directory: ./terraform
               run: terraform init -input=false
 
             - name: Terraform Plan
               working-directory: ./terraform
+              env:
+                TF_LOG: info
+                TF_LOG_PATH: terraform_githubrunner.log
               run: terraform plan -input=false -no-color -parallelism=1
 
             - name: Terraform Apply
@@ -25,10 +36,12 @@ jobs:
                terraform apply -input=false -auto-approve -parallelism=1
                
             - name: upload tf log
+              if: always()
               uses: actions/upload-artifact@v4
               with:
                 name: tf_log
                 path: ./terraform/terraform_githubrunner.log
+
             - name: Docker build and push
               run: |
                docker build -t andreir76/licenta-test .
