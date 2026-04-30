@@ -54,8 +54,8 @@ def main():
 </head>
 <body>
     <div class="card">
-        <h1>Welcome</h1>
-        <p>Kubernetes · Minikube · Flask</p>
+        <h1>Salut!</h1>
+        <p>Site pentru testarea pipeline-ului</p>
     </div>
 </body>
 </html>
