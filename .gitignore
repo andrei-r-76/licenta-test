@@ -1,2 +1,3 @@
-terraform/*.tftstate*
+terraform/*.tfstate*
 terraform/.terraform
+./terraform_backup
