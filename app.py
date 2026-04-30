@@ -23,7 +23,7 @@ def main():
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #001a00 0%, #003300 40%, #00cc44 70%, #39ff14 100%);
+            background: linear-gradient(135deg, #000f00 0%, #002200 40%, #003d00 70%, #046102 100%);
             font-family: sans-serif;
         }
 
