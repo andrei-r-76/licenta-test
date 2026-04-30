@@ -16,6 +16,12 @@ resource "aws_security_group" "acces_ssh" {
     vpc_id=aws_vpc.test_vpc.id
 }
 
+resource "aws_security_group" "acces_http" {
+    name="Accepta HTTP"
+    description="Accepta acces HTTP (port 80)"
+    vpc_id=aws_vpc.test_vpc.id
+}
+
 resource "aws_vpc_security_group_ingress_rule" "accepta_ssh" {
     security_group_id = aws_security_group.acces_ssh.id
     cidr_ipv4="0.0.0.0/0"
@@ -28,6 +34,14 @@ resource "aws_vpc_security_group_egress_rule" "accepta_outbound" {
     security_group_id = aws_security_group.acces_ssh.id
     cidr_ipv4="0.0.0.0/0"
     ip_protocol="-1"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "accepta_http" {
+    security_group_id = aws_security_group.acces_http.id
+    cidr_ipv4="0.0.0.0/0"
+    from_port=80
+    ip_protocol="tcp"
+    to_port=80
 }
 
 resource "aws_subnet" "test_subnet" {
@@ -74,7 +88,7 @@ resource "aws_instance" "licenta_test_VMapp" {
         Name=var.test_app_name
         description=var.test_app_desc
     }
-    vpc_security_group_ids=[aws_security_group.acces_ssh.id]
+    vpc_security_group_ids=[aws_security_group.acces_ssh.id, aws_security_group.acces_http.id]
     key_name=aws_key_pair.test_key_pair.key_name
     subnet_id=aws_subnet.test_subnet.id
 }
